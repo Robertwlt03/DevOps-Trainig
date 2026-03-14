@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  neon-local:
+    image: neondatabase/neon_local:latest
+    container_name: neon-local
+    ports:
+      - '5432:5432'
+    env_file:
+      - .env.development
+
+    # Optional persistent branch per git branch (uncomment if desired)
+    volumes:
+      - ./.neon_local/:/tmp/.neon_local
+      - ./.git/HEAD:/tmp/.git/HEAD:ro,consistent
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: devops-training-app-dev
+    depends_on:
+      - neon-local
+    env_file:
+      - .env.development
+    ports:
+      - '3000:3000'
+
