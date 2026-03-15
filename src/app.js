@@ -8,6 +8,7 @@ import authRoutes from '#routes/auth.routes.js';
 
 const app = express();
 import securityMiddleware from '#middleware/security.middleware.js';
+import userRoutes from "#routes/user.routes.js";
 
 app.use(helmet());
 app.use(cors());
@@ -41,5 +42,6 @@ app.get('/api', (req, res) => {
 });
 
 app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
 
 export default app;
