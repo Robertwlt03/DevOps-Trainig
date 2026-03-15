@@ -1,0 +1,58 @@
+name: Lint and Format
+
+on:
+  push:
+    branches: [main, staging]
+  pull_request:
+    branches: [main, staging]
+
+jobs:
+  lint-and-format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        id: eslint
+        run: |
+          npm run lint
+        continue-on-error: true
+
+      - name: Run Prettier check
+        id: prettier
+        run: |
+          npm run format:check
+        continue-on-error: true
+
+      - name: Fail if lint or format issues found
+        if: steps.eslint.outcome == 'failure' || steps.prettier.outcome == 'failure'
+        run: |
+          echo "::error title=Lint or format issues detected::ESLint and/or Prettier found issues. \
+          Run 'npm run lint:fix' to automatically fix lint problems where possible, and \
+          'npm run format' to apply code formatting."
+          exit 1
+
+      - name: Add summary for lint/format
+        if: always()
+        run: |
+          {
+            echo "## Lint and Format Results"
+            echo ""
+            echo "- ESLint status: **${{ steps.eslint.outcome }}**"
+            echo "- Prettier status: **${{ steps.prettier.outcome }}**"
+            echo ""
+            echo "If this job failed due to issues:"
+            echo "- Run \`npm run lint:fix\` to attempt automatic lint fixes."
+            echo "- Run \`npm run format\` to automatically format your code."
+          } >> "$GITHUB_STEP_SUMMARY"
