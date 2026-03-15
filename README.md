@@ -51,14 +51,12 @@ In `src/config/database.js`:
 1. **Fill in `.env.development`**
 
    Edit `.env.development` and set:
-
    - **`NEON_API_KEY`** – from Neon console (API Keys).
    - **`NEON_PROJECT_ID`** – from Neon project settings.
    - **`PARENT_BRANCH_ID`** – ID of the parent branch you want ephemeral branches created from (often your default branch).
    - Ensure `DATABASE_URL` uses an existing database name in Neon (typically `neondb`).
 
    The important part for the app is:
-
    - **`DATABASE_URL=postgres://neon:npg@neon-local:5432/neondb`**
 
 2. **Start the development stack**
@@ -70,13 +68,11 @@ In `src/config/database.js`:
    ```
 
    This will:
-
    - Start `neon-local` (Neon Local proxy) on port `5432`.
    - Start `devops-training-app-dev` on port `3000`.
    - Create an **ephemeral Neon branch** (via Neon Local) when the proxy container starts, and delete it when the container stops.
 
 3. **Access the app**
-
    - App: `http://localhost:3000`
    - Database: app connects to `postgres://neon:npg@neon-local:5432/neondb` inside the Docker network, which Neon Local routes to the correct Neon Cloud project/ephemeral branch.
 
@@ -95,7 +91,6 @@ In production, you connect directly to your Neon Cloud database. **No Neon Local
 1. **Fill in `.env.production`**
 
    Set:
-
    - **`DATABASE_URL`** – your Neon Cloud connection string, for example:
 
      ```bash
@@ -111,12 +106,10 @@ In production, you connect directly to your Neon Cloud database. **No Neon Local
    ```
 
    This will:
-
    - Build and run the `devops-training-app-prod` container.
    - App will read `DATABASE_URL` from `.env.production` and connect directly to Neon Cloud using the serverless driver.
 
 3. **Access the app**
-
    - App: `http://localhost:3000` (or the port/host mapped by your deployment environment).
 
 ### Switching `DATABASE_URL` between dev and prod
@@ -137,4 +130,3 @@ In production, you connect directly to your Neon Cloud database. **No Neon Local
 - **Running without Docker in development**
   - You can still run `npm install` and `npm run dev` locally.
   - In that case, set your local `.env` to point to either your Neon Cloud DB or a Neon Local instance you run separately, and adjust `NEON_LOCAL` / `DATABASE_URL` accordingly.
-

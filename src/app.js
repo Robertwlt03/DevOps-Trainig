@@ -8,7 +8,7 @@ import authRoutes from '#routes/auth.routes.js';
 
 const app = express();
 import securityMiddleware from '#middleware/security.middleware.js';
-import userRoutes from "#routes/user.routes.js";
+import userRoutes from '#routes/user.routes.js';
 
 app.use(helmet());
 app.use(cors());
