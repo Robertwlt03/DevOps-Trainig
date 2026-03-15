@@ -91,3 +91,9 @@
 {"level":"info","message":"::1 - - [14/Mar/2026:10:41:23 +0000] \"GET /health HTTP/1.1\" 403 51 \"-\" \"HTTPie\"","service":"DevOps-Trainig","timestamp":"2026-03-14T10:41:23.724Z"}
 {"level":"info","message":"Hello from DevOps-Trainig!","service":"DevOps-Trainig","timestamp":"2026-03-15T12:25:32.680Z"}
 {"level":"info","message":"::ffff:127.0.0.1 - - [15/Mar/2026:12:25:32 +0000] \"GET / HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:148.0) Gecko/20100101 Firefox/148.0\"","service":"DevOps-Trainig","timestamp":"2026-03-15T12:25:32.684Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [15/Mar/2026:15:18:01 +0000] \"GET /health HTTP/1.1\" 200 73 \"-\" \"-\"","service":"DevOps-Trainig","timestamp":"2026-03-15T15:18:01.433Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [15/Mar/2026:15:18:01 +0000] \"GET /api HTTP/1.1\" 200 44 \"-\" \"-\"","service":"DevOps-Trainig","timestamp":"2026-03-15T15:18:01.452Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [15/Mar/2026:15:18:01 +0000] \"GET /nonexistent HTTP/1.1\" 404 27 \"-\" \"-\"","service":"DevOps-Trainig","timestamp":"2026-03-15T15:18:01.463Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [15/Mar/2026:15:22:37 +0000] \"GET /health HTTP/1.1\" 200 73 \"-\" \"-\"","service":"DevOps-Trainig","timestamp":"2026-03-15T15:22:37.797Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [15/Mar/2026:15:22:37 +0000] \"GET /api HTTP/1.1\" 200 44 \"-\" \"-\"","service":"DevOps-Trainig","timestamp":"2026-03-15T15:22:37.815Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [15/Mar/2026:15:22:37 +0000] \"GET /nonexistent HTTP/1.1\" 404 27 \"-\" \"-\"","service":"DevOps-Trainig","timestamp":"2026-03-15T15:22:37.829Z"}
